@@ -16,4 +16,8 @@ public class ProductService {
     public List<Product> getProducts() {
         return productRepositoryPort.findAll();
     }
+
+    public Product addProduct(Product product) {
+        return productRepositoryPort.save(product);
+    }
 }
