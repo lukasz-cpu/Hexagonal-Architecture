@@ -13,11 +13,7 @@ public class ProductInMemoryAdapter implements ProductRepositoryPort {
 
     @Override
     public List<Product> findAll() {
-        return List.of(
-                new Product(1L, "Product One", "Description One"),
-                new Product(1L, "Product One", "Description One")
-        );
-
+        return store.values().stream().toList();
     }
 
     @Override
