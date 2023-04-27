@@ -8,6 +8,10 @@ import java.util.List;
 public class ProductInMemoryAdapter implements ProductRepositoryPort {
     @Override
     public List<Product> findAll() {
-        return null;
+        return List.of(
+                new Product(1L, "Product One", "Description One"),
+                new Product(1L, "Product One", "Description One")
+        );
+
     }
 }
