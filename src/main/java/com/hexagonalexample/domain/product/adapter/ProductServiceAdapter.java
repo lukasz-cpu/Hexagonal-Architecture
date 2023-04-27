@@ -18,4 +18,9 @@ public class ProductServiceAdapter implements ProductServicePort {
     public List<Product> getProducts() {
         return productService.getProducts();
     }
+
+    @Override
+    public Product addProduct(Product product) {
+        return productService.addProduct(product);
+    }
 }
