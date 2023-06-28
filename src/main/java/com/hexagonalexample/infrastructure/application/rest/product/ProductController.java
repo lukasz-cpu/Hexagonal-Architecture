@@ -2,6 +2,7 @@ package com.hexagonalexample.infrastructure.application.rest.product;
 
 import com.hexagonalexample.domain.product.model.Product;
 import com.hexagonalexample.domain.product.port.in.ProductServicePort;
+import com.hexagonalexample.infrastructure.application.rest.product.dto.ProductDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,7 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public Product addProduct(@RequestBody Product product){
-        return productServicePort.addProduct(product);
+    public Product addProduct(@RequestBody ProductDTO product){
+        return productServicePort.addProduct(new Product(product.id(), product.name(), product.description()));
     }
 }

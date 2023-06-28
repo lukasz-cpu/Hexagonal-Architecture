@@ -1,4 +1,7 @@
 package com.hexagonalexample.infrastructure.application.rest.product.dto;
 
-public record ProductDTO(long id, String name, String description) {
+import jakarta.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Length;
+
+public record ProductDTO(@NotEmpty Long id, @Length(min = 1)String name, @Length(min = 3) String description) {
 }
