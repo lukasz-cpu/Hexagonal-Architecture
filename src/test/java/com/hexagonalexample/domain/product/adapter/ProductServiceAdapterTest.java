@@ -1,8 +1,10 @@
 package com.hexagonalexample.domain.product.adapter;
 
+import com.hexagonalexample.domain.common.emailnotification.EmailNotificationPort;
 import com.hexagonalexample.domain.product.model.Product;
 import com.hexagonalexample.domain.product.port.out.ProductRepositoryPort;
 import com.hexagonalexample.domain.product.service.ProductService;
+import com.hexagonalexample.infrastructure.notification.inmemory.email.EmailNotoficationAdapter;
 import com.hexagonalexample.infrastructure.persistence.inmemory.ProductInMemoryAdapter;
 import org.junit.jupiter.api.Test;
 
@@ -12,8 +14,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ProductServiceAdapterTest {
 
+    private final EmailNotificationPort emailNotificationPort = new EmailNotoficationAdapter();
     private final ProductRepositoryPort productRepositoryPort = new ProductInMemoryAdapter();
-    private final ProductService productService = new ProductService(productRepositoryPort);
+    private final ProductService productService = new ProductService(productRepositoryPort, emailNotificationPort);
     private final ProductServiceAdapter productServiceAdapter = new ProductServiceAdapter(productService);
 
 

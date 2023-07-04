@@ -1,5 +1,6 @@
 package com.hexagonalexample.domain.product.service;
 
+import com.hexagonalexample.domain.common.emailnotification.EmailNotificationPort;
 import com.hexagonalexample.domain.product.model.Product;
 import com.hexagonalexample.domain.product.port.out.ProductRepositoryPort;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +25,9 @@ class ProductServiceTest {
 
     @Mock
     private ProductRepositoryPort productRepositoryPort;
+
+    @Mock
+    private EmailNotificationPort emailNotificationPort;
 
     @InjectMocks
     private ProductService productService;
