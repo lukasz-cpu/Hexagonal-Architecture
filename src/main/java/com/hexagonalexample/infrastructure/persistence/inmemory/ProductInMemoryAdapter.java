@@ -18,7 +18,7 @@ public class ProductInMemoryAdapter implements ProductRepositoryPort {
 
     @Override
     public Product save(Product product) {
-        store.put(product.id(), product);
+        store.put(product.getId(), product);
         return product;
     }
 }

@@ -25,7 +25,7 @@ public class ProductDatabaseAdapter implements ProductRepositoryPort {
 
     @Override
     public Product save(Product product) {
-        ProductEntity productEntity = new ProductEntity(product.id(), product.name(), product.description());
+        ProductEntity productEntity = new ProductEntity(product.getName(), product.getDescription());
         ProductEntity savedProduct = productRepository.save(productEntity);
         return new Product(savedProduct.getId(), savedProduct.getName(), savedProduct.getDescription());
     }

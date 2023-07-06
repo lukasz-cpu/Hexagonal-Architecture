@@ -27,6 +27,6 @@ public class ProductController {
 
     @PostMapping("/products")
     public Product addProduct(@RequestBody ProductDTO product){
-        return productServicePort.addProduct(new Product(product.id(), product.name(), product.description()));
+        return productServicePort.addProduct(new Product(product.name(), product.description()));
     }
 }

@@ -6,6 +6,8 @@ import com.hexagonalexample.domain.product.port.in.ProductServicePort;
 import com.hexagonalexample.domain.product.port.out.ProductRepositoryPort;
 import com.hexagonalexample.domain.product.service.ProductService;
 import com.hexagonalexample.infrastructure.notification.inmemory.email.EmailNotoficationAdapter;
+import com.hexagonalexample.infrastructure.persistence.database.product.adapter.ProductDatabaseAdapter;
+import com.hexagonalexample.infrastructure.persistence.database.product.repository.ProductRepository;
 import com.hexagonalexample.infrastructure.persistence.inmemory.ProductInMemoryAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,14 +18,19 @@ import java.util.List;
 @Configuration
 public class ProductConfig {
 
-    @Bean
-    public ProductRepositoryPort productRepositoryPort() {
-        return new ProductInMemoryAdapter();
-    }
+//    @Bean
+//    public ProductRepositoryPort productRepositoryPort() {
+//        return new ProductInMemoryAdapter();
+//    }
 
     @Bean
     public ProductService productService(ProductRepositoryPort productRepositoryPort, EmailNotificationPort emailNotificationPort) {
         return new ProductService(productRepositoryPort, emailNotificationPort);
+    }
+
+    @Bean
+    public ProductRepositoryPort productRepositoryPort(ProductRepository productRepository) {
+        return new ProductDatabaseAdapter(productRepository);
     }
 
 

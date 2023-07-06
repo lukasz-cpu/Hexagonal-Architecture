@@ -22,7 +22,7 @@ public class ProductService {
 
     public Product addProduct(Product product) {
         Product addedProduct = productRepositoryPort.save(product);
-        emailNotificationPort.send(List.of("admin@admin.pl"), "Product o id: " + addedProduct.id() +" zostal dodany");
+        emailNotificationPort.send(List.of("admin@admin.pl"), "Product o id: " + addedProduct.getId() +" zostal dodany");
         return addedProduct;
     }
 }
